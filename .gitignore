@@ -64,3 +64,6 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 # Auto-generated skills (managed by MCP/tools, not for version control)
 .claude/skills/
 .agents/
+.cursor/
+.windsurf/
+.devin/
