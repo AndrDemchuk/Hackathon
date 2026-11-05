@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
+import { randomUUID } from 'crypto';
 import { AppService } from './app.service';
 import { PrismaService } from './prisma.service';
 
@@ -25,8 +26,10 @@ export class AppController {
   createUser(@Body() body: { email: string; name?: string }) {
     return this.prisma.user.create({
       data: {
+        id: randomUUID(),
         email: body.email,
-        name: body.name,
+        name: body.name ?? body.email,
+        emailVerified: false,
       },
     });
   }
