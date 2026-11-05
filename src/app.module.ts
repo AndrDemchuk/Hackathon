@@ -1,0 +1,18 @@
+import { Module } from '@nestjs/common';
+import { APP_GUARD } from '@nestjs/core';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { ArcjetModule } from './lib/arcjet/arcjet.module';
+import { ArcjetGuard } from './common/guards/arcjet.guard';
+import { PrismaService } from './prisma.service';
+
+@Module({
+  imports: [ArcjetModule],
+  controllers: [AppController],
+  providers: [
+    AppService,
+    PrismaService,
+    { provide: APP_GUARD, useClass: ArcjetGuard },
+  ],
+})
+export class AppModule { }
