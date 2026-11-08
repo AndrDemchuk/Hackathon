@@ -7,9 +7,11 @@ import { ArcjetGuard } from './common/guards/arcjet.guard';
 import { PrismaService } from './prisma.service';
 import { AuthModule } from '@thallesp/nestjs-better-auth';
 import { auth } from './lib/auth/auth.js';
+import { UserModule } from './module/user/user.module';
+import { HackathonModule } from './module/hackathon/hackathon.module';
 
 @Module({
-  imports: [ArcjetModule, AuthModule.forRoot({ auth })],
+  imports: [ArcjetModule, AuthModule.forRoot({ auth }), UserModule, HackathonModule],
   controllers: [AppController],
   providers: [
     AppService,
